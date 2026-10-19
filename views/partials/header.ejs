@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f7f3">
+  <title><%= title ? title + ' | SpotScout' : 'SpotScout | Tourist Spot Review Portal' %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="site-header"><nav class="nav wrap">
+  <a class="brand" href="/"><span class="brand-mark">S</span><span>spot<span class="brand-accent">scout</span><small>FIND YOUR NEXT STORY</small></span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+  <div class="nav-links" id="navLinks"><a href="/spots">Explore</a><a href="/spots?sort=rating">Top rated</a>
+    <% if (currentUser) { %><a href="/spots/new" class="nav-add">＋ Add a place</a><span class="nav-user">Hi, <%= currentUser.name.split(' ')[0] %></span><form action="/logout" method="POST"><button class="nav-logout" type="submit">Log out</button></form>
+    <% } else { %><a href="/login">Log in</a><a class="btn btn-small btn-dark" href="/register">Join free <span>↗</span></a><% } %>
+  </div>
+</nav></header>
+<main>
+<% if (flash) { %><div class="wrap flash flash-<%= flash.type %>"><span><%= flash.message %></span><button type="button" class="flash-close" aria-label="Dismiss">×</button></div><% } %>
